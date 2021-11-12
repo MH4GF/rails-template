@@ -32,45 +32,23 @@ application do
 
   '.rstrip
 end
-#
-# # i18n
-# download "https://raw.github.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml", "config/locales/ja.yml"
-#
+
+# i18n
+download "https://raw.github.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml", "config/locales/ja.yml"
+
 # # local virtual host for development
-# environment 'config.hosts << ".lvh.me"', env: "development"
-#
-# # devise for authentication
-# Bundler.with_unbundled_env do
-#   generate "devise:install"
-# end
-# environment "config.action_mailer.default_url_options = { host: '#{app_name}.lvh.me', port: 3000 }", env: "development"
-# download "https://raw.githubusercontent.com/tigrish/devise-i18n/master/rails/locales/ja.yml", "config/locales/devise.ja.yml"
-#
-# # pundit for authorization
-# Bundler.with_unbundled_env do
-#   generate "pundit:install"
-# end
-#
-# # annotate
-# Bundler.with_unbundled_env do
-#   generate "annotate:install"
-# end
-# copy_file "lib/tasks/auto_annotate_models.rake", force: true
-#
-# # draper as a decorator
-# Bundler.with_unbundled_env do
-#   generate "draper:install"
-# end
-#
+environment 'config.hosts << ".lvh.me"', env: "development"
+
+# annotate
+Bundler.with_unbundled_env do
+  generate "annotate:install"
+end
+copy_file "lib/tasks/auto_annotate_models.rake", force: true
+
 # # setup letter_opener
-# environment "config.action_mailer.perform_deliveries = true", env: "development"
-# environment "config.action_mailer.delivery_method = :letter_opener", env: "development"
-#
-# # setup rack_dev_mark
-# application "config.rack_dev_mark.theme = [:title, Rack::DevMark::Theme::GithubForkRibbon.new(position: 'left-bottom')]"
-# application "config.rack_dev_mark.env = (ENV['STAGE'] || ENV['RAILS_ENV'])&.upcase"
-# application "config.rack_dev_mark.enable = !Rails.env.production? || ENV['STAGE'] == 'staging'"
-#
+environment "config.action_mailer.perform_deliveries = true", env: "development"
+environment "config.action_mailer.delivery_method = :letter_opener", env: "development"
+
 # # Rspec
 # Bundler.with_unbundled_env do
 #   generate "rspec:install"
