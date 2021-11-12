@@ -6,10 +6,8 @@ require_relative "lib/actions"
 extend Lib::Actions
 
 template "Gemfile", force: true
-# copy_file ".erdconfig"
-# copy_file ".gitignore", force: true unless options[:skip_git]
-# copy_file ".node-version"
-# copy_file ".rubocop.yml"
+copy_file ".gitignore", force: true unless options[:skip_git]
+copy_file ".rubocop.yml"
 # copy_file ".vscode/launch.json"
 #
 # remove_file "app/jobs/application_job.rb"
