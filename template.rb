@@ -49,33 +49,18 @@ copy_file "lib/tasks/auto_annotate_models.rake", force: true
 environment "config.action_mailer.perform_deliveries = true", env: "development"
 environment "config.action_mailer.delivery_method = :letter_opener", env: "development"
 
-# # Rspec
-# Bundler.with_unbundled_env do
-#   generate "rspec:install"
-# end
-# uncomment "spec/rails_helper.rb", "Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }"
-# copy_file "spec/support/factory_bot.rb"
-# copy_file "spec/support/time_helpers.rb"
-#
-# # TODO: simpleCov
-#
-# # capistrano for deployment
-# Bundler.with_unbundled_env do
-#   run "bundle exec cap install"
-# end
-# copy_file "Capfile", force: true
-#
+# Rspec
+Bundler.with_unbundled_env do
+  generate "rspec:install"
+end
+uncomment "spec/rails_helper.rb", "Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }"
+
 # # rubocop
-# Bundler.with_unbundled_env do
-#   run "bundle exec rubocop -DES --safe-auto-correct --force-exclusion --fail-level E"
-# end
-#
-# # binstub
-# Bundler.with_unbundled_env do
-#   run "bundle exec spring binstub --all"
-# end
-#
-# unless options[:skip_git]
-#   git add: "."
-#   git commit: "-a -m 'init'"
-# end
+Bundler.with_unbundled_env do
+  run "rubocop -DES --safe-auto-correct --force-exclusion --fail-level E"
+end
+
+# binstub
+Bundler.with_unbundled_env do
+  run "bundle exec spring binstub --all"
+end
