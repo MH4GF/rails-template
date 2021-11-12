@@ -64,3 +64,8 @@ end
 Bundler.with_unbundled_env do
   run "bundle exec spring binstub --all"
 end
+
+# routes
+
+route 'mount KomachiHeartbeat::Engine => "/ops"'
+route 'mount LetterOpenerWeb::Engine, at: "/dev/letter_opener" if ENV.fetch("USE_LETTER_OPENER_WEB", "")'
