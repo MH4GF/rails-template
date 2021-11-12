@@ -6,7 +6,6 @@ require_relative "lib/actions"
 extend Lib::Actions
 
 template "Gemfile", force: true
-# copy_file "config.ru", force: true
 # copy_file ".erdconfig"
 # copy_file ".gitignore", force: true unless options[:skip_git]
 # copy_file ".node-version"
