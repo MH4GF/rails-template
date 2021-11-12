@@ -8,7 +8,7 @@ ruby ["<%= "#{RUBY_VERSION}" %>", RUBY_VERSION].max
 <% rails_gemfile_entry.each do |gem| -%>
 gem "<%= gem.name %>"<%= %(, '#{gem.version}') if gem.version %>
 <% end -%>
-gem "<%= database_gemfile_entry.name %>"<%= %(, '#{database_gemfile_entry.version}') if database_gemfile_entry.version %>
+gem "pg"
 gem "puma"
 gem "bootsnap", require: false
 gem "committee"
