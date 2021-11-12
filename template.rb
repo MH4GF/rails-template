@@ -50,6 +50,11 @@ copy_file "lib/tasks/auto_annotate_models.rake", force: true
 environment "config.action_mailer.perform_deliveries = true", env: "development"
 environment "config.action_mailer.delivery_method = :letter_opener", env: "development"
 
+# routes
+
+route 'mount KomachiHeartbeat::Engine, at: "/ops"'
+route 'mount LetterOpenerWeb::Engine, at: "/dev/letter_opener" if ENV.fetch("USE_LETTER_OPENER_WEB", "").present?'
+
 # Rspec
 Bundler.with_unbundled_env do
   generate "rspec:install"
@@ -65,8 +70,3 @@ end
 Bundler.with_unbundled_env do
   run "bundle exec spring binstub --all"
 end
-
-# routes
-
-route 'mount KomachiHeartbeat::Engine => "/ops"'
-route 'mount LetterOpenerWeb::Engine, at: "/dev/letter_opener" if ENV.fetch("USE_LETTER_OPENER_WEB", "")'
