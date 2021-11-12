@@ -60,6 +60,7 @@ Bundler.with_unbundled_env do
   generate "rspec:install"
 end
 uncomment "spec/rails_helper.rb", "Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }"
+copy_file "spec/models/factory_spec.rb", force: true
 
 # # rubocop
 Bundler.with_unbundled_env do
