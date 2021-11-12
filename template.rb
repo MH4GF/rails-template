@@ -8,53 +8,30 @@ extend Lib::Actions
 template "Gemfile", force: true
 copy_file ".gitignore", force: true unless options[:skip_git]
 copy_file ".rubocop.yml"
-# copy_file ".vscode/launch.json"
-#
-# remove_file "app/jobs/application_job.rb"
-# copy_file "app/workers/application_worker.rb"
-# copy_file "config/initializers/lockbox.rb"
-#
-#
-# Bundler.with_unbundled_env do
-#   run 'bundle config --local build.mysql2 "--with-opt-dir=/usr/local/opt/openssl"' if options[:database] == "mysql"
-#   run "bundle install --jobs=4"
-# end
-#
-# # Logger
-# logger_config = <<-'RUBY'
-#
-#   logger = ChronoLogger.new(Rails.root.join("log", "#{Rails.env}.log.%Y%m%d").to_s)
-#   logger.formatter = config.log_formatter
-#   config.logger = ::ActiveSupport::TaggedLogging.new(logger)
-# RUBY
-# insert_into_file "config/environments/production.rb", logger_config, after: "config.log_formatter = ::Logger::Formatter.new"
-#
-# # config gem setup
-# Bundler.with_unbundled_env do
-#   generate "config:install"
-# end
-#
-# application do
-#   '
-#     config.i18n.default_locale = :ja
-#     config.time_zone = "Asia/Tokyo"
-#     config.active_record.default_timezone = :local
-#
-#     config.generators do |g|
-#       g.assets false
-#       g.helper false
-#       g.template_engine :slim
-#       g.test_framework :rspec,
-#                        fixtures: false,
-#                        view_specs: false,
-#                        controller_specs: false,
-#                        routing_specs: false,
-#                        request_specs: true
-#     end
-#
-#     # config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
-#   '.rstrip
-# end
+
+application do
+  '
+    config.load_defaults 6.1
+    config.api_only = true
+
+    config.i18n.default_locale = :ja
+    config.time_zone = "Asia/Tokyo"
+    config.active_record.default_timezone = :local
+
+    config.generators do |g|
+      g.assets false
+      g.helper false
+      g.template_engine :slim
+      g.test_framework :rspec,
+                       fixtures: false,
+                       view_specs: false,
+                       controller_specs: false,
+                       routing_specs: false,
+                       request_specs: true
+    end
+
+  '.rstrip
+end
 #
 # # i18n
 # download "https://raw.github.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml", "config/locales/ja.yml"
