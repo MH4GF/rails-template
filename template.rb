@@ -12,6 +12,7 @@ copy_file ".rubocop.yml"
 application do
   '
     config.load_defaults 6.1
+    config.add_autoload_paths_to_load_path = false
     config.api_only = true
 
     config.i18n.default_locale = :ja
