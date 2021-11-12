@@ -6,7 +6,7 @@ require:
 # 自動生成されるものはチェック対象から除外する
 AllCops:
   TargetRubyVersion: 3.0.1
-  NewCops: true
+  NewCops: enable
   Exclude:
     - ".git/**/*"
     - "config/initializers/*"
