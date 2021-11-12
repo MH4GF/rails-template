@@ -65,6 +65,7 @@ copy_file "spec/models/factory_spec.rb", force: true
 # # rubocop
 Bundler.with_unbundled_env do
   run "rubocop -DES --safe-auto-correct --force-exclusion --fail-level E"
+  run "annotate"
 end
 
 # binstub
